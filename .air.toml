@@ -1,11 +1,11 @@
 root = "."
 testdata_dir = "testdata"
-tmp_dir = "tmp/build"
+tmp_dir = "tmp/bin"
 
 [build]
   args_bin = []
-  bin = "./tmp/build/main"
-  cmd = "templ generate && go build -o ./tmp/build/main cmd/main.go"
+  bin = "./tmp/bin/main"
+  cmd = "make build"
   delay = 1000
   exclude_dir = ["assets", "tmp", "vendor", "testdata"]
   exclude_file = []

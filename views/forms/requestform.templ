@@ -1,0 +1,46 @@
+package form
+
+import "webhttprequest/views/components"
+
+templ textArea() {
+	<div class="flex flex-col">
+		<input class="text-gray-800" name="key[${1}]"/>
+		<input class="text-gray-800" name="value[${1}]"/>
+	</div>
+}
+
+templ main() {
+	<script>
+    let keyValTemplate = `<div class="flex gap-4">
+    <input class="text-gray-800" name=key></input>
+    <input class="text-gray-800" name=value></input>
+    </div>`
+    function addInput() {
+      console.log("Add Input!!");
+      let container = document.getElementById("key-values");
+      let div = document.createElement("div")
+      div.innerHTML = keyValTemplate;
+      container.appendChild(div);
+    }
+  </script>
+	<form class="flex flex-col gap-2 justify-center items-center">
+		<div class="flex flex-col">
+			<label class="self-center">Request URL</label>
+			<select name="method" class="bg-gray-800">
+				<option value="GET">get</option>
+				<option value="POST">post</option>
+			</select>
+			<input class="border-black border text-gray-800" name="url"/>
+		</div>
+		<div>
+			<div id="key-values" class="flex flex-col gap-2"></div>
+		</div>
+		<button onclick="addInput()" type="button">Add Input</button>
+		<button type="button" class="bg-gray-900 text-gray-200 p-3" hx-post="/request" hx-target="#response">Submit</button>
+		<div id="response"></div>
+	</form>
+}
+
+templ RequestForm() {
+	@components.Layout(main())
+}

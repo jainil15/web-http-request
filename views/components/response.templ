@@ -1,0 +1,14 @@
+package components
+
+templ res(response []byte) {
+	<div>
+		<span class="text-green-600">Resonse</span>
+		<pre>
+			{ string(response) }
+		</pre>
+	</div>
+}
+
+templ Response(response []byte) {
+	@Layout(res(response))
+}

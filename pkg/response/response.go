@@ -22,7 +22,7 @@ func ResponseHandler(w http.ResponseWriter, r *Response) {
 	if r.StatusCode == 0 {
 		r.StatusCode = http.StatusOK
 	}
-	jsonR, err := json.Marshal(r)
+	jsonR, err := json.MarshalIndent(r, "\n", "")
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		w.Write([]byte(fmt.Sprintf("Error encoding the response! -> %s\n", err)))
